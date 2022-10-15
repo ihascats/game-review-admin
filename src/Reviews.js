@@ -13,13 +13,16 @@ function Reviews() {
 
       const listItems = await Promise.all(
         json.map((review) => (
-          <li key={review._id}>
+          <li key={review._id} className=" w-full">
             <a href={process.env.PUBLIC_URL + `/reviews/${review._id}`}>
               <img
                 alt=""
                 src={`https://cdn.cloudflare.steamstatic.com/steam/apps/${review.steam_id}/header.jpg`}
+                className=" w-full"
               ></img>
-              <h2>{review.game_title}</h2>
+              <h2 className=" bg-pink-800 text-stone-100 font-semibold px-1">
+                {review.game_title}
+              </h2>
             </a>
           </li>
         )),
@@ -40,7 +43,9 @@ function Reviews() {
   return (
     <div>
       <Nav />
-      <ul>{reviews}</ul>
+      <ul className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
+        {reviews}
+      </ul>
     </div>
   );
 }
