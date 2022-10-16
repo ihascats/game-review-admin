@@ -33,18 +33,28 @@ function Reviews() {
   }, []);
 
   return (
-    <div>
+    <div className="bg-lime-300">
       <Nav
         reviewsList={reviewsList}
         setReviewsFilter={setReviewsFilter}
         setSearchState={setSearchState}
       />
+      {searchState ? (
+        <div className=" flex absolute top-14 z-40 justify-end w-full">
+          <ul className=" grid grid-cols-1 bg-lime-500 p-6 gap-6 sm:w-1/3">
+            {searchState && reviewsFilter.length !== 0
+              ? reviewsFilter.map((reviewFiltered) => (
+                  <ReviewCard
+                    key={reviewFiltered._id}
+                    review={reviewFiltered}
+                  />
+                ))
+              : reviews}
+          </ul>
+        </div>
+      ) : null}
       <ul className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
-        {searchState && reviewsFilter.length !== 0
-          ? reviewsFilter.map((reviewFiltered) => (
-              <ReviewCard key={reviewFiltered._id} review={reviewFiltered} />
-            ))
-          : reviews}
+        {reviews}
       </ul>
     </div>
   );
