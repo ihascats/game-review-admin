@@ -1,4 +1,13 @@
-function Search() {
+function Search({ reviewsList, setReviewsFilter, setSearchState }) {
+  function find(event) {
+    const substring = event.target.value.toLowerCase();
+    setReviewsFilter(
+      reviewsList.filter((review) =>
+        review.game_title.toLowerCase().includes(substring),
+      ),
+    );
+  }
+
   return (
     <form className="flex items-center justify-end">
       <label htmlFor="simple-search" className="sr-only">
@@ -21,6 +30,15 @@ function Search() {
           </svg>
         </div>
         <input
+          onInput={(event) => {
+            find(event);
+          }}
+          onFocus={() => {
+            setSearchState(true);
+          }}
+          onBlur={() => {
+            setSearchState(false);
+          }}
           type="text"
           id="simple-search"
           className="bg-lime-100 border border-lime-600 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-1  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

@@ -4,6 +4,9 @@ import ReviewCard from './ReviewCard';
 
 function Reviews() {
   const [reviews, setReviews] = useState([]);
+  const [reviewsList, setReviewsList] = useState([]);
+  const [reviewsFilter, setReviewsFilter] = useState([]);
+  const [searchState, setSearchState] = useState(false);
 
   useEffect(() => {
     async function fetchReviews() {
@@ -12,15 +15,16 @@ function Reviews() {
       });
       const json = await response.json(); //extract JSON from the http response
 
-      const listItems = await Promise.all(
-        json.map((review) => <ReviewCard key={review._id} review={review} />),
-      );
-      return listItems;
+      return json;
     }
 
     fetchReviews().then(
       function (value) {
-        setReviews(value);
+        setReviewsList(value);
+        const reviewCards = value.map((review) => (
+          <ReviewCard key={review._id} review={review} />
+        ));
+        setReviews(reviewCards);
       },
       function (error) {
         console.log(error);
@@ -30,9 +34,17 @@ function Reviews() {
 
   return (
     <div>
-      <Nav />
+      <Nav
+        reviewsList={reviewsList}
+        setReviewsFilter={setReviewsFilter}
+        setSearchState={setSearchState}
+      />
       <ul className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
-        {reviews}
+        {searchState && reviewsFilter.length !== 0
+          ? reviewsFilter.map((reviewFiltered) => (
+              <ReviewCard key={reviewFiltered._id} review={reviewFiltered} />
+            ))
+          : reviews}
       </ul>
     </div>
   );
