@@ -8,24 +8,35 @@ function Reviews() {
   const [reviewsFilter, setReviewsFilter] = useState([]);
   const [searchState, setSearchState] = useState(false);
   const [menuMouseOver, setMenuMouseOver] = useState(false);
+  const [fetchStatus, setFetchStatus] = useState();
 
   useEffect(() => {
     async function fetchReviews() {
-      const response = await fetch('http://localhost:3000/reviews', {
-        mode: 'cors',
-      });
-      const json = await response.json(); //extract JSON from the http response
-
-      return json;
+      const response = await fetch(
+        `http://localhost:3000${window.location.pathname}`,
+        {
+          mode: 'cors',
+        },
+      );
+      if (response.status === 200) {
+        const json = await response.json(); //extract JSON from the http response
+        return { reviews: json, response };
+      } else {
+        return { response };
+      }
     }
 
     fetchReviews().then(
       function (value) {
-        setReviewsList(value);
-        const reviewCards = value.map((review) => (
-          <ReviewCard key={review._id} review={review} />
-        ));
-        setReviews(reviewCards);
+        if (value.response.status === 200) {
+          setReviewsList(value.reviews);
+          const reviewCards = value.reviews.map((review) => (
+            <ReviewCard key={review._id} review={review} />
+          ));
+          setReviews(reviewCards);
+        } else {
+          setFetchStatus(value.response.statusText);
+        }
       },
       function (error) {
         console.log(error);
@@ -34,12 +45,17 @@ function Reviews() {
   }, []);
 
   return (
-    <div className="bg-lime-300">
+    <div className="bg-lime-200">
       <Nav
         reviewsList={reviewsList}
         setReviewsFilter={setReviewsFilter}
         setSearchState={setSearchState}
       />
+      {fetchStatus ? (
+        <h1 className=" text-center text-rose-800 font-bold text-2xl py-12">
+          {fetchStatus}
+        </h1>
+      ) : null}
       {searchState || menuMouseOver ? (
         <div className=" flex absolute top-14 z-40 justify-end w-full">
           <ul

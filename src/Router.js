@@ -11,6 +11,10 @@ const RouteSwitch = () => {
           path={process.env.PUBLIC_URL + '/reviews'}
           element={<Reviews />}
         />
+        <Route
+          path={process.env.PUBLIC_URL + '/reviews/all'}
+          element={<Reviews />}
+        />
         {/* <Route path={process.env.PUBLIC_URL + '/reviews/:id'} element={<ReviewsId/>} />
         <Route path={process.env.PUBLIC_URL + '/login'} element={<Login/>} />
         <Route path={process.env.PUBLIC_URL + '/logout'} element={<Logout/>} /> */}
