@@ -75,7 +75,7 @@ function Reviews() {
         </h1>
       ) : null}
       {searchState || menuMouseOver ? (
-        <div className=" flex absolute top-14 z-40 justify-end w-full">
+        <div className=" flex fixed top-14 z-40 justify-end w-full h-search-menu overflow-y-scroll">
           <ul
             onMouseOver={() => {
               setMenuMouseOver(true);
@@ -83,7 +83,7 @@ function Reviews() {
             onMouseLeave={() => {
               setMenuMouseOver(false);
             }}
-            className=" grid grid-cols-1 bg-lime-500 p-6 gap-6 sm:w-1/3"
+            className=" grid bg-lime-500 p-6 gap-6 h-fit sm:w-1/3"
           >
             {(searchState && reviewsFilter.length !== 0) || menuMouseOver
               ? reviewsFilter.map((reviewFiltered) => (

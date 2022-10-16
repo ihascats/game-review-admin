@@ -2,7 +2,11 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      height: {
+        'search-menu': 'calc(100vh - 3.5rem)',
+      },
+    },
   },
   plugins: [],
   'tailwindCSS.includeLanguages': {
