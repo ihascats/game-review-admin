@@ -12,17 +12,35 @@ function Reviews() {
 
   useEffect(() => {
     async function fetchReviews() {
-      const response = await fetch(
-        `http://localhost:3000${window.location.pathname}`,
-        {
-          mode: 'cors',
-        },
-      );
-      if (response.status === 200) {
-        const json = await response.json(); //extract JSON from the http response
-        return { reviews: json, response };
+      if (localStorage.Authorization) {
+        const response = await fetch(
+          `${process.env.REACT_APP_APILINK}${window.location.pathname}`,
+          {
+            mode: 'cors',
+            headers: new Headers({
+              Authorization: localStorage.Authorization,
+            }),
+          },
+        );
+        if (response.status === 200) {
+          const json = await response.json(); //extract JSON from the http response
+          return { reviews: json, response };
+        } else {
+          return { response };
+        }
       } else {
-        return { response };
+        const response = await fetch(
+          `${process.env.REACT_APP_APILINK}${window.location.pathname}`,
+          {
+            mode: 'cors',
+          },
+        );
+        if (response.status === 200) {
+          const json = await response.json(); //extract JSON from the http response
+          return { reviews: json, response };
+        } else {
+          return { response };
+        }
       }
     }
 
