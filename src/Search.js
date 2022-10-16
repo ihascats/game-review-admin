@@ -30,6 +30,9 @@ function Search({ reviewsList, setReviewsFilter, setSearchState }) {
           </svg>
         </div>
         <input
+          onSelect={(event) => {
+            find(event);
+          }}
           onInput={(event) => {
             find(event);
           }}

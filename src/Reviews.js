@@ -7,6 +7,7 @@ function Reviews() {
   const [reviewsList, setReviewsList] = useState([]);
   const [reviewsFilter, setReviewsFilter] = useState([]);
   const [searchState, setSearchState] = useState(false);
+  const [menuMouseOver, setMenuMouseOver] = useState(false);
 
   useEffect(() => {
     async function fetchReviews() {
@@ -39,10 +40,18 @@ function Reviews() {
         setReviewsFilter={setReviewsFilter}
         setSearchState={setSearchState}
       />
-      {searchState ? (
+      {searchState || menuMouseOver ? (
         <div className=" flex absolute top-14 z-40 justify-end w-full">
-          <ul className=" grid grid-cols-1 bg-lime-500 p-6 gap-6 sm:w-1/3">
-            {searchState && reviewsFilter.length !== 0
+          <ul
+            onMouseOver={() => {
+              setMenuMouseOver(true);
+            }}
+            onMouseLeave={() => {
+              setMenuMouseOver(false);
+            }}
+            className=" grid grid-cols-1 bg-lime-500 p-6 gap-6 sm:w-1/3"
+          >
+            {(searchState && reviewsFilter.length !== 0) || menuMouseOver
               ? reviewsFilter.map((reviewFiltered) => (
                   <ReviewCard
                     key={reviewFiltered._id}
