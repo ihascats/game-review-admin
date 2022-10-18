@@ -8,6 +8,7 @@ import {
   mdiPlus,
   mdiHome,
   mdiContentSave,
+  mdiClose,
 } from '@mdi/js';
 
 export default function Icons() {
@@ -99,6 +100,17 @@ export default function Icons() {
     />
   );
 
+  const cancel = (
+    <Icon
+      path={mdiClose}
+      size={1.5}
+      horizontal
+      vertical
+      rotate={180}
+      color="inherit"
+    />
+  );
+
   const icons = {
     published,
     unpublished,
@@ -108,6 +120,7 @@ export default function Icons() {
     createNew,
     home,
     save,
+    cancel,
   };
 
   return icons;

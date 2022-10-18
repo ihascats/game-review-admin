@@ -5,6 +5,8 @@ export default function AdminHud({
   setReviewInfo,
   editStatus,
   setEditStatus,
+  editInfo,
+  setEditInfo,
 }) {
   async function changePublished() {
     const response = await fetch(
@@ -15,6 +17,34 @@ export default function AdminHud({
         headers: new Headers({
           Authorization: localStorage.Authorization,
         }),
+      },
+    );
+    const json = await response.json();
+    if (response.status === 200) {
+      setReviewInfo(json.review);
+    }
+  }
+
+  async function changeReviewInfo() {
+    var urlencoded = new URLSearchParams();
+    urlencoded.append('game_title', editInfo.game_title);
+    urlencoded.append('visuals', editInfo.visuals);
+    urlencoded.append('performance', editInfo.performance);
+    urlencoded.append('accessibility', editInfo.accessibility);
+    urlencoded.append('engagement', editInfo.engagement);
+    urlencoded.append('fun', editInfo.fun);
+    urlencoded.append('status', editInfo.status);
+    urlencoded.append('published', editInfo.published);
+    urlencoded.append('steam_id', editInfo.steam_id);
+    const response = await fetch(
+      `${process.env.REACT_APP_APILINK}/reviews/${reviewInfo._id}`,
+      {
+        method: 'PUT',
+        mode: 'cors',
+        headers: new Headers({
+          Authorization: localStorage.Authorization,
+        }),
+        body: urlencoded,
       },
     );
     const json = await response.json();
@@ -50,14 +80,26 @@ export default function AdminHud({
         </button>
       )}
       {editStatus ? (
-        <button
-          onClick={() => {
-            setEditStatus(false);
-          }}
-          className=" fill-zinc-300 hover:fill-green-500"
-        >
-          {uiIcons.save}
-        </button>
+        <div className="flex">
+          <button
+            onClick={() => {
+              setEditStatus(false);
+              setEditInfo(structuredClone(reviewInfo));
+            }}
+            className=" fill-zinc-300 hover:fill-green-500"
+          >
+            {uiIcons.cancel}
+          </button>
+          <button
+            onClick={() => {
+              setEditStatus(false);
+              changeReviewInfo();
+            }}
+            className=" fill-zinc-300 hover:fill-green-500"
+          >
+            {uiIcons.save}
+          </button>
+        </div>
       ) : (
         <button
           onClick={() => {

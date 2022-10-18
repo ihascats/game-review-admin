@@ -4,9 +4,11 @@ import ReviewInfoPageCard from './ReviewInfoPageCard';
 
 function Review() {
   const [reviewInfo, setReviewInfo] = useState();
+  const [editInfo, setEditInfo] = useState();
   const [steamInfo, setSteamInfo] = useState();
   const [hltbInfo, setHltbInfo] = useState();
   const [editStatus, setEditStatus] = useState(false);
+
   useEffect(() => {
     async function fetchReview() {
       const response = await fetch(
@@ -59,6 +61,7 @@ function Review() {
       function (value) {
         if (value.response.status === 200) {
           setReviewInfo(value.review);
+          setEditInfo(structuredClone(value.review));
           fetchPrice(value.review.steam_id).then(
             function (value) {
               if (value.response.status === 200) {
@@ -101,6 +104,8 @@ function Review() {
           steamInfo={steamInfo}
           hltbInfo={hltbInfo}
           editStatus={editStatus}
+          editInfo={editInfo}
+          setEditInfo={setEditInfo}
         />
       ) : null}
       {reviewInfo && steamInfo && hltbInfo ? (
@@ -109,6 +114,8 @@ function Review() {
           editStatus={editStatus}
           setReviewInfo={setReviewInfo}
           setEditStatus={setEditStatus}
+          editInfo={editInfo}
+          setEditInfo={setEditInfo}
         />
       ) : null}
     </div>

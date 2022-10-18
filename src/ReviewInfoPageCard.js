@@ -1,4 +1,17 @@
-function ReviewInfoPageCard({ reviewInfo, steamInfo, hltbInfo, editStatus }) {
+function ReviewInfoPageCard({
+  reviewInfo,
+  steamInfo,
+  hltbInfo,
+  editStatus,
+  editInfo,
+  setEditInfo,
+}) {
+  function changeInfo(event, infoToChange) {
+    const infoCopy = editInfo;
+    infoCopy[infoToChange] = event.target.value;
+    setEditInfo(infoCopy);
+  }
+
   return (
     <div className=" grid gap-6 sm:w-1/2 xl:w-1/3 2xl:w-1/4 self-center bg-gradient-to-br from-indigo-600 to-amber-600 text-slate-100 p-4">
       {reviewInfo.published ? (
@@ -50,6 +63,9 @@ function ReviewInfoPageCard({ reviewInfo, steamInfo, hltbInfo, editStatus }) {
           <div className="grid">
             <h2 className=" font-mono font-bold text-xs">title</h2>
             <input
+              onInput={(event) => {
+                changeInfo(event, 'game_title');
+              }}
               className=" font-mono bg-zinc-600 w-full text-center rounded-md"
               defaultValue={reviewInfo.game_title}
             ></input>
@@ -57,6 +73,9 @@ function ReviewInfoPageCard({ reviewInfo, steamInfo, hltbInfo, editStatus }) {
           <div className="grid">
             <h2 className=" font-mono font-bold text-xs">steam id</h2>
             <input
+              onInput={(event) => {
+                changeInfo(event, 'steam_id');
+              }}
               className=" font-mono bg-zinc-600 w-full text-center rounded-md"
               defaultValue={reviewInfo.steam_id}
             ></input>
@@ -64,6 +83,9 @@ function ReviewInfoPageCard({ reviewInfo, steamInfo, hltbInfo, editStatus }) {
           <div className="grid">
             <h2 className=" font-mono font-bold text-xs">visuals</h2>
             <input
+              onInput={(event) => {
+                changeInfo(event, 'visuals');
+              }}
               className=" font-mono bg-zinc-600 w-full text-center rounded-md"
               defaultValue={reviewInfo.visuals}
             ></input>
@@ -71,6 +93,9 @@ function ReviewInfoPageCard({ reviewInfo, steamInfo, hltbInfo, editStatus }) {
           <div className="grid">
             <h2 className=" font-mono font-bold text-xs">performance</h2>
             <input
+              onInput={(event) => {
+                changeInfo(event, 'performance');
+              }}
               className=" font-mono bg-zinc-600 w-full text-center rounded-md"
               defaultValue={reviewInfo.performance}
             ></input>
@@ -78,6 +103,9 @@ function ReviewInfoPageCard({ reviewInfo, steamInfo, hltbInfo, editStatus }) {
           <div className="grid">
             <h2 className=" font-mono font-bold text-xs">accessibility</h2>
             <input
+              onInput={(event) => {
+                changeInfo(event, 'accessibility');
+              }}
               className=" font-mono bg-zinc-600 w-full text-center rounded-md"
               defaultValue={reviewInfo.accessibility}
             ></input>
@@ -85,6 +113,9 @@ function ReviewInfoPageCard({ reviewInfo, steamInfo, hltbInfo, editStatus }) {
           <div className="grid">
             <h2 className=" font-mono font-bold text-xs">engagement</h2>
             <input
+              onInput={(event) => {
+                changeInfo(event, 'engagement');
+              }}
               className=" font-mono bg-zinc-600 w-full text-center rounded-md"
               defaultValue={reviewInfo.engagement}
             ></input>
@@ -92,6 +123,9 @@ function ReviewInfoPageCard({ reviewInfo, steamInfo, hltbInfo, editStatus }) {
           <div className="grid">
             <h2 className=" font-mono font-bold text-xs">fun</h2>
             <input
+              onInput={(event) => {
+                changeInfo(event, 'fun');
+              }}
               className=" font-mono bg-zinc-600 w-full text-center rounded-md"
               defaultValue={reviewInfo.fun}
             ></input>
@@ -99,6 +133,9 @@ function ReviewInfoPageCard({ reviewInfo, steamInfo, hltbInfo, editStatus }) {
           <div className="grid">
             <h2 className=" font-mono font-bold text-xs">status</h2>
             <input
+              onInput={(event) => {
+                changeInfo(event, 'status');
+              }}
               className=" font-mono bg-zinc-600 w-full text-center rounded-md"
               defaultValue={reviewInfo.status}
             ></input>
