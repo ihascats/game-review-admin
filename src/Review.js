@@ -98,14 +98,22 @@ function Review() {
   if (reviewInfo) {
     adminHud = (
       <div className=" sticky w-full h-fit bg-zinc-900 bottom-0 grid grid-cols-4 justify-items-center p-2 border-t-4 border-zinc-300 sm:w-1/2 xl:w-1/3 2xl:w-1/4">
-        <button className="">{uiIcons.back}</button>
+        <button className=" fill-zinc-300 hover:fill-yellow-500">
+          {uiIcons.back}
+        </button>
         {reviewInfo.published ? (
-          <button>{uiIcons.published}</button>
+          <button className=" fill-zinc-300 hover:fill-blue-500">
+            {uiIcons.published}
+          </button>
         ) : (
           <button>{uiIcons.unpublished}</button>
         )}
-        <button>{uiIcons.edit}</button>
-        <button>{uiIcons.deleteReview}</button>
+        <button className=" fill-zinc-300 hover:fill-green-500">
+          {uiIcons.edit}
+        </button>
+        <button className=" fill-zinc-300 hover:fill-red-500">
+          {uiIcons.deleteReview}
+        </button>
       </div>
     );
   }

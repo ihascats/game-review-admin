@@ -16,7 +16,7 @@ export default function Icons() {
       horizontal
       vertical
       rotate={180}
-      color="rgb(212 212 216)"
+      color="inherit"
     />
   );
 
@@ -27,7 +27,7 @@ export default function Icons() {
       horizontal
       vertical
       rotate={180}
-      color="rgb(212 212 216)"
+      color="inherit"
     />
   );
 
@@ -38,7 +38,7 @@ export default function Icons() {
       horizontal
       vertical
       rotate={180}
-      color="rgb(212 212 216)"
+      color="inherit"
     />
   );
 
@@ -49,7 +49,7 @@ export default function Icons() {
       horizontal
       vertical
       rotate={180}
-      color="rgb(212 212 216)"
+      color="inherit"
     />
   );
 
@@ -60,7 +60,7 @@ export default function Icons() {
       horizontal
       vertical
       rotate={180}
-      color="rgb(212 212 216)"
+      color="inherit"
     />
   );
 
