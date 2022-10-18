@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Icons from './Icons';
 import ReviewInfoPageCard from './ReviewInfoPageCard';
 
 function Review() {
@@ -91,6 +92,24 @@ function Review() {
     );
   }, []);
 
+  const uiIcons = Icons();
+
+  let adminHud = [];
+  if (reviewInfo) {
+    adminHud = (
+      <div className=" sticky w-full h-fit bg-zinc-900 bottom-0 grid grid-cols-4 justify-items-center p-2 border-t-4 border-zinc-300">
+        <button>{uiIcons.back}</button>
+        {reviewInfo.published ? (
+          <button>{uiIcons.published}</button>
+        ) : (
+          <button>{uiIcons.unpublished}</button>
+        )}
+        <button>{uiIcons.edit}</button>
+        <button>{uiIcons.deleteReview}</button>
+      </div>
+    );
+  }
+
   return (
     <div className=" justify-items-center grid w-full h-screen pb-56">
       {reviewInfo && steamInfo && hltbInfo ? (
@@ -100,6 +119,7 @@ function Review() {
           hltbInfo={hltbInfo}
         />
       ) : null}
+      {adminHud ? adminHud : null}
     </div>
   );
 }
