@@ -6,6 +6,7 @@ import {
   mdiDelete,
   mdiArrowLeft,
   mdiPlus,
+  mdiHome,
 } from '@mdi/js';
 
 export default function Icons() {
@@ -65,7 +66,25 @@ export default function Icons() {
   );
 
   const createNew = (
-    <Icon path={mdiPlus} size={1} horizontal vertical rotate={180} />
+    <Icon
+      path={mdiPlus}
+      size={1}
+      horizontal
+      vertical
+      rotate={180}
+      color="inherit"
+    />
+  );
+
+  const home = (
+    <Icon
+      path={mdiHome}
+      size={1.5}
+      horizontal
+      vertical
+      rotate={180}
+      color="inherit"
+    />
   );
 
   const icons = {
@@ -75,6 +94,7 @@ export default function Icons() {
     deleteReview,
     back,
     createNew,
+    home,
   };
 
   return icons;
