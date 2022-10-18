@@ -1,6 +1,11 @@
 import Icons from './Icons';
 
-export default function AdminHud({ reviewInfo, setReviewInfo }) {
+export default function AdminHud({
+  reviewInfo,
+  setReviewInfo,
+  editStatus,
+  setEditStatus,
+}) {
   async function changePublished() {
     const response = await fetch(
       `${process.env.REACT_APP_APILINK}/reviews/published/${reviewInfo._id}`,
@@ -44,9 +49,26 @@ export default function AdminHud({ reviewInfo, setReviewInfo }) {
           {uiIcons.unpublished}
         </button>
       )}
-      <button className=" fill-zinc-300 hover:fill-green-500">
-        {uiIcons.edit}
-      </button>
+      {editStatus ? (
+        <button
+          onClick={() => {
+            setEditStatus(false);
+          }}
+          className=" fill-zinc-300 hover:fill-green-500"
+        >
+          {uiIcons.save}
+        </button>
+      ) : (
+        <button
+          onClick={() => {
+            setEditStatus(true);
+          }}
+          className=" fill-zinc-300 hover:fill-green-500"
+        >
+          {uiIcons.edit}
+        </button>
+      )}
+
       <button className=" fill-zinc-300 hover:fill-red-500">
         {uiIcons.deleteReview}
       </button>

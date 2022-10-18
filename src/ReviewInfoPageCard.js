@@ -1,4 +1,4 @@
-function ReviewInfoPageCard({ reviewInfo, steamInfo, hltbInfo }) {
+function ReviewInfoPageCard({ reviewInfo, steamInfo, hltbInfo, editStatus }) {
   return (
     <div className=" grid gap-6 sm:w-1/2 xl:w-1/3 2xl:w-1/4 self-center bg-gradient-to-br from-indigo-600 to-amber-600 text-slate-100 p-4">
       {reviewInfo.published ? (
@@ -45,32 +45,93 @@ function ReviewInfoPageCard({ reviewInfo, steamInfo, hltbInfo }) {
           </h3>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-5 bg-zinc-800 px-3 py-6 ">
-        <div className="grid">
-          <h2 className=" font-mono font-bold text-xs">visuals</h2>
-          <h3 className=" font-mono">{reviewInfo.visuals}&#9733;</h3>
+      {editStatus ? (
+        <div className="grid grid-cols-2 gap-5 bg-zinc-800 px-3 py-6 ">
+          <div className="grid">
+            <h2 className=" font-mono font-bold text-xs">title</h2>
+            <input
+              className=" font-mono bg-zinc-600 w-full text-center rounded-md"
+              defaultValue={reviewInfo.game_title}
+            ></input>
+          </div>
+          <div className="grid">
+            <h2 className=" font-mono font-bold text-xs">steam id</h2>
+            <input
+              className=" font-mono bg-zinc-600 w-full text-center rounded-md"
+              defaultValue={reviewInfo.steam_id}
+            ></input>
+          </div>
+          <div className="grid">
+            <h2 className=" font-mono font-bold text-xs">visuals</h2>
+            <input
+              className=" font-mono bg-zinc-600 w-full text-center rounded-md"
+              defaultValue={reviewInfo.visuals}
+            ></input>
+          </div>
+          <div className="grid">
+            <h2 className=" font-mono font-bold text-xs">performance</h2>
+            <input
+              className=" font-mono bg-zinc-600 w-full text-center rounded-md"
+              defaultValue={reviewInfo.performance}
+            ></input>
+          </div>
+          <div className="grid">
+            <h2 className=" font-mono font-bold text-xs">accessibility</h2>
+            <input
+              className=" font-mono bg-zinc-600 w-full text-center rounded-md"
+              defaultValue={reviewInfo.accessibility}
+            ></input>
+          </div>
+          <div className="grid">
+            <h2 className=" font-mono font-bold text-xs">engagement</h2>
+            <input
+              className=" font-mono bg-zinc-600 w-full text-center rounded-md"
+              defaultValue={reviewInfo.engagement}
+            ></input>
+          </div>
+          <div className="grid">
+            <h2 className=" font-mono font-bold text-xs">fun</h2>
+            <input
+              className=" font-mono bg-zinc-600 w-full text-center rounded-md"
+              defaultValue={reviewInfo.fun}
+            ></input>
+          </div>
+          <div className="grid">
+            <h2 className=" font-mono font-bold text-xs">status</h2>
+            <input
+              className=" font-mono bg-zinc-600 w-full text-center rounded-md"
+              defaultValue={reviewInfo.status}
+            ></input>
+          </div>
         </div>
-        <div className="grid">
-          <h2 className=" font-mono font-bold text-xs">performance</h2>
-          <h3 className=" font-mono">{reviewInfo.performance}&#9733;</h3>
+      ) : (
+        <div className="grid grid-cols-2 gap-5 bg-zinc-800 px-3 py-6 ">
+          <div className="grid">
+            <h2 className=" font-mono font-bold text-xs">visuals</h2>
+            <h3 className=" font-mono">{reviewInfo.visuals}&#9733;</h3>
+          </div>
+          <div className="grid">
+            <h2 className=" font-mono font-bold text-xs">performance</h2>
+            <h3 className=" font-mono">{reviewInfo.performance}&#9733;</h3>
+          </div>
+          <div className="grid">
+            <h2 className=" font-mono font-bold text-xs">accessibility</h2>
+            <h3 className=" font-mono">{reviewInfo.accessibility}&#9733;</h3>
+          </div>
+          <div className="grid">
+            <h2 className=" font-mono font-bold text-xs">engagement</h2>
+            <h3 className=" font-mono">{reviewInfo.engagement}&#9733;</h3>
+          </div>
+          <div className="grid">
+            <h2 className=" font-mono font-bold text-xs">fun</h2>
+            <h3 className=" font-mono">{reviewInfo.fun}&#9733;</h3>
+          </div>
+          <div className="grid">
+            <h2 className=" font-mono font-bold text-xs">status</h2>
+            <h3 className=" font-mono">{reviewInfo.status}</h3>
+          </div>
         </div>
-        <div className="grid">
-          <h2 className=" font-mono font-bold text-xs">accessibility</h2>
-          <h3 className=" font-mono">{reviewInfo.accessibility}&#9733;</h3>
-        </div>
-        <div className="grid">
-          <h2 className=" font-mono font-bold text-xs">engagement</h2>
-          <h3 className=" font-mono">{reviewInfo.engagement}&#9733;</h3>
-        </div>
-        <div className="grid">
-          <h2 className=" font-mono font-bold text-xs">fun</h2>
-          <h3 className=" font-mono">{reviewInfo.fun}&#9733;</h3>
-        </div>
-        <div className="grid">
-          <h2 className=" font-mono font-bold text-xs">status</h2>
-          <h3 className=" font-mono">{reviewInfo.status}&#9733;</h3>
-        </div>
-      </div>
+      )}
     </div>
   );
 }

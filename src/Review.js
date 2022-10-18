@@ -6,6 +6,7 @@ function Review() {
   const [reviewInfo, setReviewInfo] = useState();
   const [steamInfo, setSteamInfo] = useState();
   const [hltbInfo, setHltbInfo] = useState();
+  const [editStatus, setEditStatus] = useState(false);
   useEffect(() => {
     async function fetchReview() {
       const response = await fetch(
@@ -99,10 +100,16 @@ function Review() {
           reviewInfo={reviewInfo}
           steamInfo={steamInfo}
           hltbInfo={hltbInfo}
+          editStatus={editStatus}
         />
       ) : null}
       {reviewInfo && steamInfo && hltbInfo ? (
-        <AdminHud reviewInfo={reviewInfo} setReviewInfo={setReviewInfo} />
+        <AdminHud
+          reviewInfo={reviewInfo}
+          editStatus={editStatus}
+          setReviewInfo={setReviewInfo}
+          setEditStatus={setEditStatus}
+        />
       ) : null}
     </div>
   );
