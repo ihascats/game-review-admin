@@ -71,7 +71,7 @@ export default function Icons() {
   const createNew = (
     <Icon
       path={mdiPlus}
-      size={1}
+      size={2}
       horizontal
       vertical
       rotate={180}
