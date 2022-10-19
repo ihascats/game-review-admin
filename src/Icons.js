@@ -10,6 +10,7 @@ import {
   mdiContentSave,
   mdiClose,
   mdiCloseCircle,
+  mdiCheck,
 } from '@mdi/js';
 
 export default function Icons() {
@@ -123,6 +124,17 @@ export default function Icons() {
     />
   );
 
+  const check = (
+    <Icon
+      path={mdiCheck}
+      size={1.5}
+      horizontal
+      vertical
+      rotate={180}
+      color="inherit"
+    />
+  );
+
   const icons = {
     published,
     unpublished,
@@ -134,6 +146,7 @@ export default function Icons() {
     save,
     cancel,
     cancelSearch,
+    check,
   };
 
   return icons;
