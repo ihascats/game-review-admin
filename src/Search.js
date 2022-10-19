@@ -1,4 +1,10 @@
+import { useState } from 'react';
+import Icons from './Icons';
+
 function Search({ reviewsList, setReviewsFilter, setSearchState }) {
+  const uiIcons = Icons();
+  const [cancelSearchColor, setCancelSearchColor] = useState(false);
+
   function find(event) {
     const substring = event.target.value.toLowerCase();
     setReviewsFilter(
@@ -13,7 +19,7 @@ function Search({ reviewsList, setReviewsFilter, setSearchState }) {
       <label htmlFor="simple-search" className="sr-only">
         Search
       </label>
-      <div className="relative w-36 md:w-48 lg:w-72 2xl:w-2/3">
+      <div className="relative w-36 md:w-48 lg:w-72 2xl:w-2/3 flex">
         <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
           <svg
             aria-hidden="true"
@@ -38,9 +44,11 @@ function Search({ reviewsList, setReviewsFilter, setSearchState }) {
           }}
           onFocus={() => {
             setSearchState(true);
+            setCancelSearchColor(true);
           }}
           onBlur={() => {
             setSearchState(false);
+            setCancelSearchColor(false);
           }}
           type="text"
           id="simple-search"
@@ -48,6 +56,18 @@ function Search({ reviewsList, setReviewsFilter, setSearchState }) {
           placeholder="Search"
           required
         ></input>
+        {cancelSearchColor ? (
+          <button
+            type="button"
+            onClick={() => {
+              setSearchState(false);
+              setCancelSearchColor(false);
+            }}
+            className="items-center px-3 fill-red-600 cursor"
+          >
+            {uiIcons.cancelSearch}
+          </button>
+        ) : null}
       </div>
     </form>
   );

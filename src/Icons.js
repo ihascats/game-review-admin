@@ -9,6 +9,7 @@ import {
   mdiHome,
   mdiContentSave,
   mdiClose,
+  mdiCloseCircle,
 } from '@mdi/js';
 
 export default function Icons() {
@@ -111,6 +112,17 @@ export default function Icons() {
     />
   );
 
+  const cancelSearch = (
+    <Icon
+      path={mdiCloseCircle}
+      size={0.9}
+      horizontal
+      vertical
+      rotate={180}
+      color="inherit"
+    />
+  );
+
   const icons = {
     published,
     unpublished,
@@ -121,6 +133,7 @@ export default function Icons() {
     home,
     save,
     cancel,
+    cancelSearch,
   };
 
   return icons;
