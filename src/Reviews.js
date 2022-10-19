@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Nav from './Nav';
 import ReviewCard from './ReviewCard';
 import Icons from './Icons';
+import NewReview from './NewReview';
 
 function Reviews() {
   const [reviews, setReviews] = useState([]);
@@ -10,6 +11,7 @@ function Reviews() {
   const [searchState, setSearchState] = useState(false);
   const [menuMouseOver, setMenuMouseOver] = useState(false);
   const [fetchStatus, setFetchStatus] = useState();
+  const [newReview, setNewReview] = useState(false);
 
   const uiIcons = Icons();
 
@@ -79,6 +81,10 @@ function Reviews() {
     );
   }, []);
 
+  function newReviewWindow() {
+    setNewReview(true);
+  }
+
   return (
     <div className="bg-slate-300">
       <Nav
@@ -116,7 +122,10 @@ function Reviews() {
       <ul className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
         {isMobile ? null : (
           <li className=" w-full">
-            <button className=" h-full w-full grid items-end bg-lime-300 fill-zinc-600 hover:bg-lime-200 hover:fill-zinc-800">
+            <button
+              onClick={newReviewWindow}
+              className=" h-full w-full grid items-end bg-lime-300 fill-zinc-600 hover:bg-lime-200 hover:fill-zinc-800"
+            >
               <div className=" grid justify-items-center">
                 {uiIcons.createNew}
               </div>
@@ -129,10 +138,14 @@ function Reviews() {
         {reviews}
       </ul>
       {isMobile ? (
-        <button className=" fixed bottom-5 right-5 bg-lime-300 fill-zinc-600 hover:bg-lime-200 hover:fill-zinc-800 w-fit h-fit rounded-full p-2">
+        <button
+          onClick={newReviewWindow}
+          className=" fixed bottom-5 right-5 bg-lime-300 fill-zinc-600 hover:bg-lime-200 hover:fill-zinc-800 w-fit h-fit rounded-full p-2"
+        >
           {uiIcons.createNew}
         </button>
       ) : null}
+      {newReview ? <NewReview setNewReview={setNewReview} /> : null}
     </div>
   );
 }
