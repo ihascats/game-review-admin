@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Icons from './Icons';
 
 export default function AdminHud({
@@ -8,6 +9,8 @@ export default function AdminHud({
   editInfo,
   setEditInfo,
 }) {
+  const [deleteCheck, setDeleteCheck] = useState(false);
+
   async function changePublished() {
     const response = await fetch(
       `${process.env.REACT_APP_APILINK}/reviews/published/${reviewInfo._id}`,
@@ -50,6 +53,22 @@ export default function AdminHud({
     const json = await response.json();
     if (response.status === 200) {
       setReviewInfo(json.review);
+    }
+  }
+
+  async function deleteReview() {
+    const response = await fetch(
+      `${process.env.REACT_APP_APILINK}/reviews/${reviewInfo._id}`,
+      {
+        method: 'DELETE',
+        mode: 'cors',
+        headers: new Headers({
+          Authorization: localStorage.Authorization,
+        }),
+      },
+    );
+    if (response.status === 200) {
+      window.location.replace(`${process.env.PUBLIC_URL}/reviews/all`);
     }
   }
 
@@ -111,9 +130,36 @@ export default function AdminHud({
         </button>
       )}
 
-      <button className=" fill-zinc-300 hover:fill-red-500">
+      <button
+        onClick={() => {
+          setDeleteCheck(true);
+        }}
+        className=" fill-zinc-300 hover:fill-red-500"
+      >
         {uiIcons.deleteReview}
       </button>
+
+      {deleteCheck ? (
+        <div className=" grid fixed inset-0 mx-auto h-fit top-1/2 bg-zinc-200 w-fit px-6 py-3 text-zinc-900 rounded-md">
+          Proceed with Deletion
+          <div className=" grid grid-cols-2 py-1">
+            <button
+              onClick={() => {
+                setDeleteCheck(false);
+              }}
+              className=" hover:bg-green-500 w-full h-full"
+            >
+              NO
+            </button>
+            <button
+              onClick={deleteReview}
+              className=" hover:bg-red-500 w-full h-full"
+            >
+              YES
+            </button>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
