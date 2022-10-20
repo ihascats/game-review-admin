@@ -34,7 +34,8 @@ export default function NewReview({ setNewReview, setReviewsList }) {
   });
 
   async function createReview() {
-    var urlencoded = new URLSearchParams();
+    if (newReviewInfo.length === 0 || newReviewInfo.steam_id === 0) return;
+    const urlencoded = new URLSearchParams();
     urlencoded.append('game_title', newReviewInfo.game_title);
     urlencoded.append('visuals', newReviewInfo.visuals);
     urlencoded.append('performance', newReviewInfo.performance);
@@ -67,7 +68,7 @@ export default function NewReview({ setNewReview, setReviewsList }) {
           onInput={(event) => {
             findGameId(event);
             const clone = structuredClone(newReviewInfo);
-            clone.game_title = event.target.value;
+            clone.game_title = event.target.value.trim();
             setNewReviewInfo(clone);
           }}
           className=" w-64 bg-zinc-700 pl-1"
