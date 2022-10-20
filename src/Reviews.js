@@ -5,7 +5,6 @@ import Icons from './Icons';
 import NewReview from './NewReview';
 
 function Reviews() {
-  const [reviews, setReviews] = useState([]);
   const [reviewsList, setReviewsList] = useState([]);
   const [reviewsFilter, setReviewsFilter] = useState([]);
   const [searchState, setSearchState] = useState(false);
@@ -67,10 +66,6 @@ function Reviews() {
       function (value) {
         if (value.response.status === 200) {
           setReviewsList(value.reviews);
-          const reviewCards = value.reviews.map((review) => (
-            <ReviewCard key={review._id} review={review} />
-          ));
-          setReviews(reviewCards);
         } else {
           setFetchStatus(value.response.statusText);
         }
@@ -115,7 +110,9 @@ function Reviews() {
                     review={reviewFiltered}
                   />
                 ))
-              : reviews}
+              : reviewsList.map((review) => (
+                  <ReviewCard key={review._id} review={review} />
+                ))}
           </ul>
         </div>
       ) : null}
@@ -135,7 +132,9 @@ function Reviews() {
             </button>
           </li>
         )}
-        {reviews}
+        {reviewsList.map((review) => (
+          <ReviewCard key={review._id} review={review} />
+        ))}
       </ul>
       {isMobile ? (
         <button
@@ -145,7 +144,12 @@ function Reviews() {
           {uiIcons.createNew}
         </button>
       ) : null}
-      {newReview ? <NewReview setNewReview={setNewReview} /> : null}
+      {newReview ? (
+        <NewReview
+          setNewReview={setNewReview}
+          setReviewsList={setReviewsList}
+        />
+      ) : null}
     </div>
   );
 }

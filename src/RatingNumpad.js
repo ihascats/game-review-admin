@@ -1,4 +1,8 @@
-export default function RatingNumpad() {
+export default function RatingNumpad({
+  newReviewInfo,
+  setNewReviewInfo,
+  value,
+}) {
   function selectedButton(event) {
     event.target.parentElement.childNodes.forEach((button) => {
       if (button.classList.contains('border-lime-500')) {
@@ -8,6 +12,9 @@ export default function RatingNumpad() {
     });
     event.target.classList.add('border-lime-500');
     event.target.classList.remove('border-rose-500');
+    const clone = structuredClone(newReviewInfo);
+    clone[value] = Number(event.target.textContent);
+    setNewReviewInfo(clone);
   }
   return (
     <div
