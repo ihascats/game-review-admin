@@ -118,7 +118,7 @@ function Reviews() {
         </div>
       ) : null}
       <ul className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
-        {isMobile ? (
+        {newReview ? null : isMobile ? (
           <button
             onClick={newReviewWindow}
             className=" fixed bottom-5 right-5 bg-lime-300 fill-zinc-600 hover:bg-lime-200 hover:fill-zinc-800 w-fit h-fit rounded-full p-2 z-50"
@@ -140,6 +140,7 @@ function Reviews() {
             </button>
           </li>
         )}
+
         {reviewsList.map((review) => (
           <ReviewCard key={review._id} review={review} />
         ))}

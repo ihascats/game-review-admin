@@ -61,8 +61,8 @@ export default function NewReview({ setNewReview, setReviewsList }) {
   }
 
   return (
-    <div className="overflow-auto grid justify-items-center fixed z-50 h-screen w-screen bottom-0 inset-0 mx-auto md:w-fit bg-gradient-to-br from-rose-600 to-blue-600 text-slate-100 p-4">
-      <form className=" grid">
+    <div className="overflow-auto items-start grid justify-items-center fixed z-50 h-search-menu mt-14 w-screen bottom-0 md:w-fit bg-gradient-to-br from-rose-600 to-blue-600 text-slate-100 p-4">
+      <form className=" grid ">
         <label className="w-fit">Game Title:</label>
         <input
           onInput={(event) => {
