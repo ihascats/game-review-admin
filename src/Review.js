@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import AdminHud from './AdminHud';
+import Loading from './Loading';
 import ReviewInfoPageCard from './ReviewInfoPageCard';
 
 function Review() {
@@ -111,7 +112,9 @@ function Review() {
           editInfo={editInfo}
           setEditInfo={setEditInfo}
         />
-      ) : null}
+      ) : (
+        <Loading />
+      )}
       {reviewInfo && steamInfo && String(hltbInfo) ? (
         <AdminHud
           reviewInfo={reviewInfo}

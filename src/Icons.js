@@ -11,6 +11,7 @@ import {
   mdiClose,
   mdiCloseCircle,
   mdiCheck,
+  mdiLoading,
 } from '@mdi/js';
 
 export default function Icons() {
@@ -135,6 +136,18 @@ export default function Icons() {
     />
   );
 
+  const loading = (
+    <Icon
+      path={mdiLoading}
+      size={1.5}
+      horizontal
+      vertical
+      rotate={180}
+      color="inherit"
+      spin
+    />
+  );
+
   const icons = {
     published,
     unpublished,
@@ -147,6 +160,7 @@ export default function Icons() {
     cancel,
     cancelSearch,
     check,
+    loading,
   };
 
   return icons;

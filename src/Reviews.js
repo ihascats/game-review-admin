@@ -86,6 +86,7 @@ function Reviews() {
         reviewsList={reviewsList}
         setReviewsFilter={setReviewsFilter}
         setSearchState={setSearchState}
+        isMobile={isMobile}
       />
       {fetchStatus ? (
         <h1 className=" text-center text-rose-800 font-bold text-2xl py-12">
@@ -117,7 +118,14 @@ function Reviews() {
         </div>
       ) : null}
       <ul className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
-        {isMobile ? null : (
+        {isMobile ? (
+          <button
+            onClick={newReviewWindow}
+            className=" fixed bottom-5 right-5 bg-lime-300 fill-zinc-600 hover:bg-lime-200 hover:fill-zinc-800 w-fit h-fit rounded-full p-2 z-50"
+          >
+            {uiIcons.createNew}
+          </button>
+        ) : (
           <li className=" w-full">
             <button
               onClick={newReviewWindow}
@@ -136,14 +144,6 @@ function Reviews() {
           <ReviewCard key={review._id} review={review} />
         ))}
       </ul>
-      {isMobile ? (
-        <button
-          onClick={newReviewWindow}
-          className=" fixed bottom-5 right-5 bg-lime-300 fill-zinc-600 hover:bg-lime-200 hover:fill-zinc-800 w-fit h-fit rounded-full p-2"
-        >
-          {uiIcons.createNew}
-        </button>
-      ) : null}
       {newReview ? (
         <NewReview
           setNewReview={setNewReview}
