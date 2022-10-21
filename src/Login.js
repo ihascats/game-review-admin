@@ -29,7 +29,7 @@ function Login() {
   }
 
   return (
-    <div className=" grid grid-rows-2 w-full justify-center h-screen content-center">
+    <div className=" grid grid-rows-2 w-full justify-center h-screen content-center bg-gradient-to-br from-cyan-400 to-pink-300">
       <form
         onSubmit={(event) => {
           sendLogin(event);
@@ -37,16 +37,19 @@ function Login() {
         className=" grid w-full justify-center h-full content-center"
       >
         <label className=" tracking-wider font-bold text-sm">USERNAME:</label>
-        <input name="username" className=" rounded-md bg-lime-100"></input>
+        <input
+          name="username"
+          className=" rounded-md bg-zinc-600 text-zinc-100 pl-1"
+        ></input>
         <label className=" tracking-wider font-bold text-sm">PASSWORD:</label>
         <input
           name="password"
           type="password"
-          className=" rounded-md bg-lime-100"
+          className=" rounded-md bg-zinc-600 text-zinc-100 pl-1"
         ></input>
         <button
           type="submit"
-          className=" mt-4 rounded-md bg-lime-400 hover:bg-cyan-300 text-sm tracking-widest py-1"
+          className=" mt-4 rounded-md bg-zinc-600 text-zinc-100 hover:bg-pink-300 hover:text-zinc-900 text-sm tracking-widest py-1"
         >
           LOGIN
         </button>

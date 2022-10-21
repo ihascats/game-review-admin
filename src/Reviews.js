@@ -81,7 +81,7 @@ function Reviews() {
   }
 
   return (
-    <div className="bg-slate-300">
+    <div className="bg-zinc-300">
       <Nav
         reviewsList={reviewsList}
         setReviewsFilter={setReviewsFilter}
@@ -102,7 +102,7 @@ function Reviews() {
             onMouseLeave={() => {
               setMenuMouseOver(false);
             }}
-            className=" grid bg-slate-500 p-6 gap-6 h-fit sm:w-1/3"
+            className=" grid bg-zinc-900 p-6 gap-6 h-fit sm:w-1/3"
           >
             {(searchState && reviewsFilter.length !== 0) || menuMouseOver
               ? reviewsFilter.map((reviewFiltered) => (

@@ -12,6 +12,7 @@ import {
   mdiCloseCircle,
   mdiCheck,
   mdiLoading,
+  mdiLogout,
 } from '@mdi/js';
 
 export default function Icons() {
@@ -148,6 +149,17 @@ export default function Icons() {
     />
   );
 
+  const logout = (
+    <Icon
+      path={mdiLogout}
+      size={1}
+      horizontal
+      vertical
+      rotate={180}
+      color="inherit"
+    />
+  );
+
   const icons = {
     published,
     unpublished,
@@ -161,6 +173,7 @@ export default function Icons() {
     cancelSearch,
     check,
     loading,
+    logout,
   };
 
   return icons;
