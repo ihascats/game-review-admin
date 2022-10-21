@@ -85,6 +85,9 @@ export default function NewReview({ setNewReview, setReviewsList }) {
             const clone = structuredClone(newReviewInfo);
             clone.steam_id = event.target.value;
             setNewReviewInfo(clone);
+            event.target.parentElement.children[1].value = gameId.filter(
+              (game) => game.appid === Number(event.target.value),
+            )[0].name;
           }}
           name="steam_id"
           id="steam_id"
