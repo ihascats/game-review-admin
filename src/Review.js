@@ -78,10 +78,14 @@ function Review() {
           fetchHltb(value.review.game_title).then(
             function (value) {
               if (value.response.status === 200) {
-                if (value.hltb.response[0].gameplayMain === 0) {
+                if (value.hltb.response.length === 0) {
                   setHltbInfo('N/A');
                 } else {
-                  setHltbInfo(value.hltb.response[0].gameplayMain);
+                  if (value.hltb.response[0].gameplayMain === 0) {
+                    setHltbInfo('N/A');
+                  } else {
+                    setHltbInfo(value.hltb.response[0].gameplayMain);
+                  }
                 }
               } else {
                 console.log(value.response.statusText);
@@ -102,7 +106,7 @@ function Review() {
   }, []);
 
   return (
-    <div className=" justify-items-center grid w-full h-screen pb-56">
+    <div className=" items-center flex flex-col w-full h-full">
       {reviewInfo && steamInfo && String(hltbInfo) ? (
         <ReviewInfoPageCard
           reviewInfo={reviewInfo}
