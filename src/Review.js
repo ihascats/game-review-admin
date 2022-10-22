@@ -105,30 +105,42 @@ function Review() {
     );
   }, []);
 
+  if (reviewInfo) {
+    document.querySelector(
+      '.dynamic-bg',
+    ).style.backgroundImage = `url('https://cdn.cloudflare.steamstatic.com/steam/apps/${reviewInfo.steam_id}/header.jpg')`;
+  }
+
   return (
-    <div className=" items-center flex flex-col w-full h-full">
-      {reviewInfo && steamInfo && String(hltbInfo) ? (
-        <ReviewInfoPageCard
-          reviewInfo={reviewInfo}
-          steamInfo={steamInfo}
-          hltbInfo={hltbInfo}
-          editStatus={editStatus}
-          editInfo={editInfo}
-          setEditInfo={setEditInfo}
-        />
-      ) : (
-        <Loading />
-      )}
-      {reviewInfo && steamInfo && String(hltbInfo) ? (
-        <AdminHud
-          reviewInfo={reviewInfo}
-          editStatus={editStatus}
-          setReviewInfo={setReviewInfo}
-          setEditStatus={setEditStatus}
-          editInfo={editInfo}
-          setEditInfo={setEditInfo}
-        />
-      ) : null}
+    <div
+      className={` dynamic-bg h-screen w-screen bg-no-repeat bg-cover bg-center`}
+    >
+      <div
+        className={` items-center flex flex-col w-full h-full backdrop-blur-md`}
+      >
+        {reviewInfo && steamInfo && String(hltbInfo) ? (
+          <ReviewInfoPageCard
+            reviewInfo={reviewInfo}
+            steamInfo={steamInfo}
+            hltbInfo={hltbInfo}
+            editStatus={editStatus}
+            editInfo={editInfo}
+            setEditInfo={setEditInfo}
+          />
+        ) : (
+          <Loading />
+        )}
+        {reviewInfo && steamInfo && String(hltbInfo) ? (
+          <AdminHud
+            reviewInfo={reviewInfo}
+            editStatus={editStatus}
+            setReviewInfo={setReviewInfo}
+            setEditStatus={setEditStatus}
+            editInfo={editInfo}
+            setEditInfo={setEditInfo}
+          />
+        ) : null}
+      </div>
     </div>
   );
 }

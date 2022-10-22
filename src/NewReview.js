@@ -163,7 +163,7 @@ export default function NewReview({ setNewReview, setReviewsList }) {
           className=" w-64 bg-zinc-700"
         >
           <option value="completed">completed</option>
-          <option value="incompleted">incomplete</option>
+          <option value="incomplete">incomplete</option>
         </select>
         <div className=" grid justify-items-center grid-cols-2 px-6 pt-6">
           <button
