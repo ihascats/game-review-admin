@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import Nav from './Nav';
-import ReviewCard from './ReviewCard';
-import Icons from './Icons';
-import NewReview from './NewReview';
+import Nav from './components/Nav';
+import ReviewCard from './components/ReviewCard';
+import Icons from './components/Icons';
+import NewReview from './components/NewReview';
 
 function Reviews() {
   const [reviewsList, setReviewsList] = useState([]);

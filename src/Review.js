@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import AdminHud from './AdminHud';
-import Loading from './Loading';
-import ReviewInfoPageCard from './ReviewInfoPageCard';
+import AdminHud from './components/AdminHud';
+import Loading from './components/Loading';
+import ReviewInfoPageCard from './components/ReviewInfoPageCard';
 
 function Review() {
   const [reviewInfo, setReviewInfo] = useState();

@@ -1,5 +1,3 @@
-import './App.css';
-
 function App() {
   window.location.replace(`${process.env.PUBLIC_URL}/reviews/all`);
   return <div></div>;

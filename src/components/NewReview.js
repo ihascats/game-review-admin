@@ -1,5 +1,5 @@
 import RatingNumpad from './RatingNumpad';
-import steam_games from './steam-games.json';
+import steam_games from '../steam-games.json';
 import { useState } from 'react';
 import Icons from './Icons';
 
