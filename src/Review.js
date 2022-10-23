@@ -45,7 +45,7 @@ function Review() {
               currency: 'USD',
               discount_percent: 0,
               final: 0,
-              final_formatted: 'Free',
+              final_formatted: 'N/A',
               initial: 0,
               initial_formatted: '',
             },
