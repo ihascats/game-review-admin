@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Icons from './Icons';
 
 export default function AdminHud({
@@ -11,6 +11,7 @@ export default function AdminHud({
   setEditInfo,
 }) {
   const [deleteCheck, setDeleteCheck] = useState(false);
+  const navigate = useNavigate();
 
   async function changePublished() {
     const response = await fetch(
@@ -69,7 +70,7 @@ export default function AdminHud({
       },
     );
     if (response.status === 200) {
-      <Navigate to={`${process.env.PUBLIC_URL}/reviews/all`} />;
+      navigate(`${process.env.PUBLIC_URL}/reviews/all`, { replace: true });
     }
   }
 
