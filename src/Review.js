@@ -35,8 +35,23 @@ function Review() {
         },
       );
       if (response.status === 200) {
-        const json = await response.json(); //extract JSON from the http response
-        return { price_overview: json, response };
+        try {
+          const json = await response.json(); //extract JSON from the http response
+          console.log(json);
+          return { price_overview: json, response };
+        } catch {
+          return {
+            price_overview: {
+              currency: 'USD',
+              discount_percent: 0,
+              final: 0,
+              final_formatted: 'N/A',
+              initial: 0,
+              initial_formatted: '',
+            },
+            response,
+          };
+        }
       } else {
         return { response };
       }

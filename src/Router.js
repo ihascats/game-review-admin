@@ -1,5 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import App from './App.js';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './Login.js';
 import Review from './Review.js';
 import Reviews from './Reviews';
@@ -8,7 +7,15 @@ const RouteSwitch = () => {
   return (
     <BrowserRouter basename={'/'}>
       <Routes>
-        <Route path={process.env.PUBLIC_URL + '/'} element={<App />} />
+        <Route
+          path="*"
+          element={
+            <Navigate
+              to={`${process.env.PUBLIC_URL}/reviews/all`}
+              replace={true}
+            />
+          }
+        />
         <Route
           path={process.env.PUBLIC_URL + '/reviews'}
           element={<Reviews />}
@@ -22,7 +29,6 @@ const RouteSwitch = () => {
           path={process.env.PUBLIC_URL + '/reviews/:id'}
           element={<Review />}
         />
-        {/* <Route path={process.env.PUBLIC_URL + '/logout'} element={<Logout/>} /> */}
       </Routes>
     </BrowserRouter>
   );

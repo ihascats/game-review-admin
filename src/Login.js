@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [loginFailed, setLoginFailed] = useState(false);
+  const navigate = useNavigate();
 
   async function sendLogin(event) {
     event.preventDefault();
@@ -21,7 +23,7 @@ function Login() {
     );
     if (response.status === 200) {
       localStorage.setItem('Authorization', await response.text());
-      window.location.replace(`${process.env.PUBLIC_URL}/reviews/all`);
+      navigate(`${process.env.PUBLIC_URL}/reviews/all`, { replace: true });
     } else {
       setLoginFailed(true);
       localStorage.clear();

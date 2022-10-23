@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom';
+
 function ReviewCard({ review }) {
   return (
     <li className=" w-full">
-      <a href={process.env.PUBLIC_URL + `/reviews/${review._id}`}>
+      <Link to={process.env.PUBLIC_URL + `/reviews/${review._id}`}>
         {review.published ? (
           <img
             alt=""
@@ -24,7 +26,7 @@ function ReviewCard({ review }) {
             {review.game_title}
           </h2>
         )}
-      </a>
+      </Link>
     </li>
   );
 }
