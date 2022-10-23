@@ -29,10 +29,14 @@ function Reviews() {
   const isMobile = width <= 768;
 
   useEffect(() => {
+    const currentLocation = window.location.pathname
+      .split('/')
+      .splice(2)
+      .join('/');
     async function fetchReviews() {
       if (localStorage.Authorization) {
         const response = await fetch(
-          `${process.env.REACT_APP_APILINK}${window.location.pathname}`,
+          `${process.env.REACT_APP_APILINK}/${currentLocation}`,
           {
             mode: 'cors',
             headers: new Headers({
@@ -48,7 +52,7 @@ function Reviews() {
         }
       } else {
         const response = await fetch(
-          `${process.env.REACT_APP_APILINK}${window.location.pathname}`,
+          `${process.env.REACT_APP_APILINK}/${currentLocation}`,
           {
             mode: 'cors',
           },

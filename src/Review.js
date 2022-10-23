@@ -11,9 +11,13 @@ function Review() {
   const [editStatus, setEditStatus] = useState(false);
 
   useEffect(() => {
+    const currentLocation = window.location.pathname
+      .split('/')
+      .splice(2)
+      .join('/');
     async function fetchReview() {
       const response = await fetch(
-        `${process.env.REACT_APP_APILINK}${window.location.pathname}`,
+        `${process.env.REACT_APP_APILINK}/${currentLocation}`,
         {
           mode: 'cors',
         },
