@@ -12,8 +12,12 @@ function Login() {
     var urlencoded = new URLSearchParams();
     urlencoded.append('username', dataToSend.username);
     urlencoded.append('password', dataToSend.password);
+    const currentLocation = window.location.pathname
+      .split('/')
+      .splice(2)
+      .join('/');
     const response = await fetch(
-      `${process.env.REACT_APP_APILINK}${window.location.pathname}`,
+      `${process.env.REACT_APP_APILINK}/${currentLocation}`,
       {
         'Content-Type': 'application/x-www-form-urlencoded',
         mode: 'cors',
