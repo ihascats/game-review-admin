@@ -72,7 +72,11 @@ function Reviews() {
         if (value.response.status === 200) {
           setReviewsList(value.reviews);
         } else {
-          setFetchStatus(value.response.statusText);
+          if (value.response.status === 401) {
+            setFetchStatus(`${value.response.status}: Unauthorized`);
+          } else {
+            setFetchStatus(value.response.status);
+          }
         }
       },
       function (error) {
@@ -147,7 +151,7 @@ function Reviews() {
               </button>
             </li>
           )
-        ) : (
+        ) : fetchStatus ? null : (
           <Loading />
         )}
 
