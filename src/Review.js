@@ -41,7 +41,6 @@ function Review() {
       if (response.status === 200) {
         try {
           const json = await response.json(); //extract JSON from the http response
-          console.log(json);
           return { price_overview: json, response };
         } catch {
           return {
