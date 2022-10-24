@@ -75,7 +75,7 @@ export default function AdminHud({
   }
 
   const uiIcons = Icons();
-  return (
+  return localStorage.Authorization ? (
     <div className=" sticky w-full h-fit bg-zinc-900 bottom-0 grid grid-cols-4 justify-items-center p-2 border-t-4 border-zinc-300 sm:w-1/2 xl:w-1/3 2xl:w-1/4">
       <Link
         to={`/reviews/all`}
@@ -160,6 +160,12 @@ export default function AdminHud({
           </div>
         </div>
       ) : null}
+    </div>
+  ) : (
+    <div className=" sticky w-full h-fit bg-zinc-900 bottom-0 grid grid-cols-4 justify-items-center p-2 border-t-4 border-zinc-300 sm:w-1/2 xl:w-1/3 2xl:w-1/4">
+      <Link to={`/reviews`} className=" fill-zinc-300 hover:fill-yellow-500">
+        {uiIcons.back}
+      </Link>
     </div>
   );
 }

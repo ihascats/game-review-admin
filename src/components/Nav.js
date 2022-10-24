@@ -14,16 +14,20 @@ function Nav({ reviewsList, setReviewsFilter, setSearchState, isMobile }) {
       {isMobile ? (
         <h1 className=" text-neutral-100 font-mono text-xl fill-zinc-300 flex gap-4">
           GReview{' '}
-          <Link to={`/login`} onClick={logout}>
-            {uiIcons.logout}
-          </Link>
+          {localStorage.Authorization ? (
+            <Link to={`/login`} onClick={logout}>
+              {uiIcons.logout}
+            </Link>
+          ) : null}
         </h1>
       ) : (
         <h1 className=" text-neutral-100 font-mono text-xl fill-zinc-300 flex gap-4">
           Game Review
-          <Link to={`/login`} onClick={logout}>
-            {uiIcons.logout}
-          </Link>
+          {localStorage.Authorization ? (
+            <Link to={`/login`} onClick={logout}>
+              {uiIcons.logout}
+            </Link>
+          ) : null}
         </h1>
       )}
 
