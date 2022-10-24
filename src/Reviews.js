@@ -3,6 +3,7 @@ import Nav from './components/Nav';
 import ReviewCard from './components/ReviewCard';
 import Icons from './components/Icons';
 import NewReview from './components/NewReview';
+import Loading from './components/Loading';
 
 function Reviews() {
   const [reviewsList, setReviewsList] = useState([]);
@@ -85,7 +86,7 @@ function Reviews() {
   }
 
   return (
-    <div className="bg-zinc-300">
+    <div className=" bg-zinc-500">
       <Nav
         reviewsList={reviewsList}
         setReviewsFilter={setReviewsFilter}
@@ -122,28 +123,32 @@ function Reviews() {
         </div>
       ) : null}
       <ul className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
-        {!localStorage.Authorization ? null : window.location.pathname ===
-          `/reviews` ? null : newReview ? null : isMobile ? (
-          <button
-            onClick={newReviewWindow}
-            className=" fixed bottom-5 right-5 bg-lime-300 fill-zinc-600 hover:bg-lime-200 hover:fill-zinc-800 w-fit h-fit rounded-full p-2 z-50"
-          >
-            {uiIcons.createNew}
-          </button>
-        ) : (
-          <li className=" w-full">
+        {reviewsList.length > 0 ? (
+          !localStorage.Authorization ? null : window.location.pathname ===
+            `/reviews` ? null : newReview ? null : isMobile ? (
             <button
               onClick={newReviewWindow}
-              className=" h-full w-full grid items-end bg-lime-300 fill-zinc-600 hover:bg-lime-200 hover:fill-zinc-800"
+              className=" fixed bottom-5 right-5 bg-lime-300 fill-zinc-600 hover:bg-lime-200 hover:fill-zinc-800 w-fit h-fit rounded-full p-2 z-50"
             >
-              <div className=" grid justify-items-center">
-                {uiIcons.createNew}
-              </div>
-              <h2 className=" bg-zinc-700 text-zinc-300 font-semibold px-1 text-left">
-                Create a new review
-              </h2>
+              {uiIcons.createNew}
             </button>
-          </li>
+          ) : (
+            <li className=" w-full">
+              <button
+                onClick={newReviewWindow}
+                className=" h-full w-full grid items-end bg-lime-300 fill-zinc-600 hover:bg-lime-200 hover:fill-zinc-800"
+              >
+                <div className=" grid justify-items-center">
+                  {uiIcons.createNew}
+                </div>
+                <h2 className=" bg-zinc-700 text-zinc-300 font-semibold px-1 text-left">
+                  Create a new review
+                </h2>
+              </button>
+            </li>
+          )
+        ) : (
+          <Loading />
         )}
 
         {reviewsList.map((review) => (
