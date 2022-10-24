@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import AdminHud from './components/AdminHud';
 import Loading from './components/Loading';
 import ReviewInfoPageCard from './components/ReviewInfoPageCard';
@@ -123,15 +123,16 @@ function Review() {
     );
   }, []);
 
+  const dynamicBg = useRef();
+
   if (reviewInfo) {
-    document.querySelector(
-      '.dynamic-bg',
-    ).style.backgroundImage = `url('https://cdn.cloudflare.steamstatic.com/steam/apps/${reviewInfo.steam_id}/header.jpg')`;
+    dynamicBg.current.style.backgroundImage = `url('https://cdn.cloudflare.steamstatic.com/steam/apps/${reviewInfo.steam_id}/header.jpg')`;
   }
 
   return (
     <div
       className={` dynamic-bg h-screen w-screen bg-no-repeat bg-cover bg-center`}
+      ref={dynamicBg}
     >
       <div
         className={` items-center flex flex-col w-full h-full backdrop-blur-md`}
