@@ -70,7 +70,7 @@ export default function AdminHud({
       },
     );
     if (response.status === 200) {
-      navigate(`${process.env.PUBLIC_URL}/reviews/all`, { replace: true });
+      navigate(`/reviews/all`, { replace: true });
     }
   }
 
@@ -78,7 +78,7 @@ export default function AdminHud({
   return (
     <div className=" sticky w-full h-fit bg-zinc-900 bottom-0 grid grid-cols-4 justify-items-center p-2 border-t-4 border-zinc-300 sm:w-1/2 xl:w-1/3 2xl:w-1/4">
       <Link
-        to={`${process.env.PUBLIC_URL}/reviews/all`}
+        to={`/reviews/all`}
         className=" fill-zinc-300 hover:fill-yellow-500"
       >
         {uiIcons.home}

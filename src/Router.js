@@ -5,30 +5,16 @@ import Reviews from './Reviews';
 
 const RouteSwitch = () => {
   return (
-    <BrowserRouter basename={'/'}>
+    <BrowserRouter basename={'/game-review-admin'}>
       <Routes>
         <Route
           path="*"
-          element={
-            <Navigate
-              to={`${process.env.PUBLIC_URL}/reviews/all`}
-              replace={true}
-            />
-          }
+          element={<Navigate to={`/reviews/all`} replace={true} />}
         />
-        <Route
-          path={process.env.PUBLIC_URL + '/reviews'}
-          element={<Reviews />}
-        />
-        <Route
-          path={process.env.PUBLIC_URL + '/reviews/all'}
-          element={<Reviews />}
-        />
-        <Route path={process.env.PUBLIC_URL + '/login'} element={<Login />} />
-        <Route
-          path={process.env.PUBLIC_URL + '/reviews/:id'}
-          element={<Review />}
-        />
+        <Route path={'/reviews'} element={<Reviews />} />
+        <Route path={'/reviews/all'} element={<Reviews />} />
+        <Route path={'/login'} element={<Login />} />
+        <Route path={'/reviews/:id'} element={<Review />} />
       </Routes>
     </BrowserRouter>
   );

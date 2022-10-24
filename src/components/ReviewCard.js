@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function ReviewCard({ review }) {
   return (
     <li className=" w-full">
-      <Link to={process.env.PUBLIC_URL + `/reviews/${review._id}`}>
+      <Link to={`/reviews/${review._id}`}>
         {review.published ? (
           <img
             alt=""

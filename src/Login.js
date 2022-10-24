@@ -27,7 +27,7 @@ function Login() {
     );
     if (response.status === 200) {
       localStorage.setItem('Authorization', await response.text());
-      navigate(`${process.env.PUBLIC_URL}/reviews/all`, { replace: true });
+      navigate(`/reviews/all`, { replace: true });
     } else {
       setLoginFailed(true);
       localStorage.clear();
