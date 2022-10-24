@@ -57,10 +57,8 @@ function ReviewInfoPageCard({
         </div>
         <div className="grid">
           <h2 className=" font-mono font-bold text-xs">Price per hour~</h2>
-          {isNaN(hltbInfo) || isNaN(steamInfo.final_formatted) ? (
-            <h3 className=" font-mono">
-              {isNaN(hltbInfo) ? hltbInfo : steamInfo.final_formatted}
-            </h3>
+          {isNaN(hltbInfo) || steamInfo.final === 0 ? (
+            <h3 className=" font-mono">N/A</h3>
           ) : (
             <h3 className=" font-mono">
               ${(steamInfo.initial / (hltbInfo * 100)).toFixed(2)}
