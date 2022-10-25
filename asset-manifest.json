@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/game-review-admin/static/css/main.3e29ee50.css",
-    "main.js": "/game-review-admin/static/js/main.afe131f8.js",
+    "main.js": "/game-review-admin/static/js/main.291a681f.js",
     "index.html": "/game-review-admin/index.html",
     "main.3e29ee50.css.map": "/game-review-admin/static/css/main.3e29ee50.css.map",
-    "main.afe131f8.js.map": "/game-review-admin/static/js/main.afe131f8.js.map"
+    "main.291a681f.js.map": "/game-review-admin/static/js/main.291a681f.js.map"
   },
   "entrypoints": [
     "static/css/main.3e29ee50.css",
-    "static/js/main.afe131f8.js"
+    "static/js/main.291a681f.js"
   ]
 }
