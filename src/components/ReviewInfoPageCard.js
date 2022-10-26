@@ -13,7 +13,7 @@ function ReviewInfoPageCard({
   }
 
   return (
-    <div className=" flex flex-col gap-6 sm:w-1/2 xl:w-1/3 2xl:w-1/4 self-center bg-gradient-to-br from-indigo-600 to-amber-600 text-slate-100 p-4 h-full overflow-scroll">
+    <div className=" flex flex-col gap-6 sm:w-1/2 xl:w-1/3 2xl:w-1/4 self-center bg-gradient-to-br from-indigo-600 to-amber-600 text-slate-100 p-4 h-full overflow-y-scroll hide-scroll">
       {reviewInfo.published ? (
         <img
           alt=""
